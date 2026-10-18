@@ -1,4 +1,4 @@
-name: iOS E2E - Native Demo App
+name: Native Demo App - Pipeline E2E - iOS
 
 on:
   push:
