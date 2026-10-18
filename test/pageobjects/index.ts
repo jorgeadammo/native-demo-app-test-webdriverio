@@ -1,7 +1,10 @@
-import LoginPage from './login.page.js';
-import FormsPage from './forms.page.js';
+import LoginPage from './login.page.ts';
+import FormsPage from './forms.page.ts';
+import SwipePage from './swipe.page.ts';
+
 
 export {
   LoginPage,
-  FormsPage
+  FormsPage,
+  SwipePage
 };

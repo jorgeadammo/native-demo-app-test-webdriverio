@@ -28,7 +28,8 @@ export const config: WebdriverIO.Config = {
     //
     specs: [
         './test/specs/login.spec.ts', // 1º: Roda o fluxo de Login
-        './test/specs/forms.spec.ts', // 2º: Roda o fluxo de Formulários
+        './test/specs/forms.spec.ts', // 2º: Roda Formulários
+        './test/specs/swipe.spec.ts', // 3º: Roda Swipe
         './test/specs/**/*.ts'
     ],
     // Patterns to exclude.
