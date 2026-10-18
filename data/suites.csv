@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1","Deve exibir mensagem de erro ao tentar logar com formato de e-mail inválido","Native Demo App - Fluxo de Login","2026-10-18","broken","2026-10-18","","","",""
+"","0","Deve exibir mensagem de erro ao tentar logar com senha curta","Native Demo App - Fluxo de Login","2026-10-18","broken","2026-10-18","","","",""
+"","30978","Deve exibir um alerta de sucesso ao logar com credenciais válidas","Native Demo App - Fluxo de Login","2026-10-18","broken","2026-10-18","","","",""
