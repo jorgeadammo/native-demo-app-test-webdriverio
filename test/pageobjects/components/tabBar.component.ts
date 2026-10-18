@@ -40,6 +40,15 @@ class TabBarComponent {
     await this.login.click();
   }
 
+  async openForms() {
+    // Executa a rotina contra telas pretas e travamentos do CI
+    await this.assegurarRenderizacao();
+
+    // Aguarda a visibilidade final do botão de login e clica
+    await this.forms.waitForDisplayed({ timeout: 15000 });
+    await this.forms.click();
+  }
+
 }
 
 export default new TabBarComponent();
