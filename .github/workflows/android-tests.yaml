@@ -1,0 +1,66 @@
+name: Native Demo App - Pipeline E2E - Android
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+# PERMISSÃO CRÍTICA: Permite que o pipeline crie e escreva na branch gh-pages
+permissions:
+  contents: write
+
+jobs:
+  android-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Create Apps Directory
+        run: |
+          mkdir -p apps
+          ls -lh apps/
+          file apps/Android-NativeDemoApp.apk || true
+
+      - name: Run Android Emulator and Test Suite
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          target: default
+          arch: x86_64
+          force-avd-creation: true
+          disable-spellchecker: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-audio -no-boot-anim -no-snapshot -camera-back none -camera-front none -cores 1 -memory 1536
+          script: npm run test
+
+      # 6. Cria o histórico e gera a pasta estática HTML do Allure
+      - name: Generate Allure Report
+        if: always()
+        run: |
+          npm run report:generate || true
+
+      # 7. PASSO NOVO: Faz o deploy automático dos arquivos HTML para o GitHub Pages
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report # Pasta gerada pelo comando do Allure
+          force_orphan: false
