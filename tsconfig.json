@@ -30,6 +30,7 @@
         "wdio.conf.ts",
         "test/specs/login.spec.ts",
         "test/specs/forms.spec.ts",
-        "test/specs/swipe.spec.ts"
+        "test/specs/swipe.spec.ts",
+        "test/specs/drag.spec.ts"
     ]
 }

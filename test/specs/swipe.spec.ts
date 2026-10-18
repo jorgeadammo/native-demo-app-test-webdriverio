@@ -1,7 +1,7 @@
 import allureReporter from '@wdio/allure-reporter';
 import SwipePage from '../pageobjects/swipe.page.js';
 
-describe('Interações Avançadas - Tela de Swipe', () => {
+describe('Native Demo App - Tela de Swipe', () => {
 
   beforeEach(async () => {
     allureReporter.addEpic('Mobile Apps');

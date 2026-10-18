@@ -30,6 +30,7 @@ export const config: WebdriverIO.Config = {
         './test/specs/login.spec.ts', // 1º: Roda o fluxo de Login
         './test/specs/forms.spec.ts', // 2º: Roda Formulários
         './test/specs/swipe.spec.ts', // 3º: Roda Swipe
+        './test/specs/drag.spec.ts', // 4º: Roda Drag
         './test/specs/**/*.ts'
     ],
     // Patterns to exclude.
@@ -58,15 +59,6 @@ export const config: WebdriverIO.Config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    // capabilities: [{
-    //     // capabilities for local Appium web tests on an Android Emulator
-    //     platformName: 'Android',
-    //     'appium:deviceName': 'Android GoogleAPI Emulator',
-    //     'appium:appPackage': 'com.google.android.youtube',
-    //     'appium:appActivity': '.app.honeycomb.Shell$HomeActivity',
-    //     'appium:platformVersion': '13.0',
-    //     'appium:automationName': 'UiAutomator2'
-    // }],
     hostname: 'localhost',
     connectionRetryTimeout: 240000, // Aumentado para 4 minutos
     connectionRetryCount: 3,

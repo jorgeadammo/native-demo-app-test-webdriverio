@@ -58,6 +58,15 @@ class TabBarComponent {
     await this.swipe.click();
   }
 
+  async openDrag() {
+    // Executa a rotina contra telas pretas e travamentos do CI
+    await this.assegurarRenderizacao();
+
+    // Aguarda a visibilidade final do botão de login e clica
+    await this.drag.waitForDisplayed({ timeout: 15000 });
+    await this.drag.click();
+  }
+
 }
 
 export default new TabBarComponent();
