@@ -1,0 +1,40 @@
+name: iOS E2E - Native Demo App
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ios-tests:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Extract iOS Simulator App
+        run: unzip -q apps/ios.simulator.wdio.native.app.v1.0.8.zip -d apps
+
+      - name: Verify iOS Simulator App
+        run: test -f apps/Payload/wdiodemoapp.app/Info.plist
+
+      - name: Run iOS Simulator Test Suite
+        env:
+          IOS_DEVICE_NAME: iPhone 16
+          IOS_APP: ./apps/Payload/wdiodemoapp.app
+        run: npm run test:ios
