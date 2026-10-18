@@ -19,6 +19,7 @@
   "scripts": {
     "wdio": "wdio run ./wdio.conf.ts",
     "test": "npx wdio run ./wdio.conf.ts",
+    "test:ios": "wdio run ./wdio.ios.conf.ts",
     "report:generate": "npx allure generate allure-results --clean",
     "report:open": "npx allure open"
   }

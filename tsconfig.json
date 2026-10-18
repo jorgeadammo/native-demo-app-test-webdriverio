@@ -28,6 +28,7 @@
     "include": [
         "test/specs",
         "wdio.conf.ts",
+        "wdio.ios.conf.ts",
         "test/specs/login.spec.ts",
         "test/specs/forms.spec.ts",
         "test/specs/swipe.spec.ts",
